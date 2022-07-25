@@ -12,36 +12,33 @@ function getRandomWholeNum(min, max) {
 function playRound(computerSelection, playerSelection) {
     if (computerSelection === 'ROCK') {
         if (playerSelection.toUpperCase() === 'ROCK')
-            console.log('You tied!');
+            return 'You tied!';
         else if (playerSelection.toUpperCase() === 'PAPER')
-            console.log('You won!')
-        else
-            console.log('You lost!')
+            return 'You won!';
+        return 'You lost!';
     }
 
     if (computerSelection === 'PAPER') {
         if (playerSelection.toUpperCase() === 'PAPER')
-            console.log('You tied!');
+            return 'You tied!';
         else if (playerSelection.toUpperCase() === 'SCISSORS')
-            console.log('You won!')
+            return 'You won!';
         else
-            console.log('You lost!')
+            return 'You lost!';
     }
 
     if (computerSelection === 'SCISSORS') {
         if (playerSelection.toUpperCase() === 'SCISSORS')
-            console.log('You tied!');
+            return 'You tied!';
         else if (playerSelection.toUpperCase() === 'ROCK')
-            console.log('You won!')
+            return 'You won!';
         else
-            console.log('You lost!')
+            return 'You lost!';
     }
 }
-
-function playRound()
 
 let computerSelection = getComputerChoice();
 let playerSelection = prompt('Rock, paper, or scissors?');
 
 console.log(`Computer selected ${computerSelection}!`)
-playRound(computerSelection, playerSelection);
+console.log(playRound(computerSelection, playerSelection));
