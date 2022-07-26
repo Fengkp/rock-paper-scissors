@@ -28,4 +28,4 @@ Create a function game() that calls playRound
         - Loop 5 rounds
     - Store and increment score for user when they win
     - Store and increment score for computer when they win
-    - Prints final result to console
+    - Print final result to console
