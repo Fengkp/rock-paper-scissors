@@ -20,42 +20,44 @@ function getRandomWholeNum(min, max) {
 }
 
 // Compare user choice against computer choice
-function compareChoices(userChoice, compareChoice) {
-    if (computerSelection === 'ROCK') {
-        if (playerSelection.toUpperCase() === 'ROCK')
-            return 'You tied!';
-        else if (playerSelection.toUpperCase() === 'PAPER')
-            return 'You won!';
-        return 'You lost!';
+// Return result based on comparison
+function compareChoices(userChoice, computerChoice) {
+    if (computerChoice === 'ROCK') {
+        if (userChoice === 'ROCK')
+            return `You tied! Computer selected ${computerChoice}`;
+        else if (userChoice === 'PAPER')
+            return `You won! ${userChoice} beats ${computerChoice}`;
+        return `You lost! ${computerChoice} beats ${userChoice}`;
     }
 
-    if (computerSelection === 'PAPER') {
-        if (playerSelection.toUpperCase() === 'PAPER')
-            return 'You tied!';
-        else if (playerSelection.toUpperCase() === 'SCISSORS')
-            return 'You won!';
-        else
-            return 'You lost!';
+    if (computerChoice === 'PAPER') {
+        if (userChoice === 'PAPER')
+            return `You tied! Computer selected ${computerChoice}`;
+        else if (userChoice === 'SCISSORS')
+            return `You won! ${userChoice} beats ${computerChoice}`;
+        return `You lost! ${computerChoice} beats ${userChoice}`;
     }
 
-    if (computerSelection === 'SCISSORS') {
-        if (playerSelection.toUpperCase() === 'SCISSORS')
-            return 'You tied!';
-        else if (playerSelection.toUpperCase() === 'ROCK')
-            return 'You won!';
-        else
-            return 'You lost!';
+    if (computerChoice === 'SCISSORS') {
+        if (userChoice === 'SCISSORS')
+            return `You tied! Computer selected ${computerChoice}`;
+        else if (userChoice === 'ROCK')
+            return `You won! ${userChoice} beats ${computerChoice}`;
+        return `You lost! ${computerChoice} beats ${userChoice}`;
     }
+}
+
+function printResult(result) {
+    console.log(result)
 }
 
 // Initiate playRound function
 function playRound() {
     let userChoice = getUserChoice();
     let computerChoice = getComputerChoice();
+    let result = compareChoice(userChoice, computerChoice);
 
-    compareChoice(userChoice, computerChoice);
-    console.log(`Computer selected ${computerSelection}!`)
-    console.log(playRound(computerSelection, playerSelection));
+    printResult(result)
 }
 
 playRound()
