@@ -29,8 +29,8 @@ function compareChoices(userChoice, computerChoice) {
         || computerChoice === 'SCISSORS' && userChoice === 'ROCK')
         return 'USER WON';
     else if (computerChoice === 'ROCK' && userChoice === 'SCISSORS'
-            || computerChoice === 'PAPER' && userChoice === 'ROCK'
-            || computerChoice === 'SCISSORS' && userChoice === 'PAPER')
+             || computerChoice === 'PAPER' && userChoice === 'ROCK'
+             || computerChoice === 'SCISSORS' && userChoice === 'PAPER')
         return 'USER LOST';
     return 'TIE'
 }
