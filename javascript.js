@@ -23,49 +23,55 @@ function getRandomWholeNum(min, max) {
 // Return result based on comparison
 function compareChoices(userChoice, computerChoice) {
     if (computerChoice === 'ROCK') {
-        if (userChoice === 'ROCK')
-            return `You tied! Computer selected ${computerChoice}`;
-        else if (userChoice === 'PAPER')
-            return `You won! ${userChoice} beats ${computerChoice}`;
-        return `You lost! ${computerChoice} beats ${userChoice}`;
+        if (userChoice === 'PAPER')
+            return 'WON';
+        else if (userChoice === 'SCISSORS')
+            return 'LOST';
     }
 
     if (computerChoice === 'PAPER') {
-        if (userChoice === 'PAPER')
-            return `You tied! Computer selected ${computerChoice}`;
-        else if (userChoice === 'SCISSORS')
-            return `You won! ${userChoice} beats ${computerChoice}`;
-        return `You lost! ${computerChoice} beats ${userChoice}`;
+        if (userChoice === 'SCISSORS')
+            return 'WON';
+        else if (userChoice === 'ROCK')
+            return 'LOST';
     }
 
     if (computerChoice === 'SCISSORS') {
-        if (userChoice === 'SCISSORS')
-            return `You tied! Computer selected ${computerChoice}`;
-        else if (userChoice === 'ROCK')
-            return `You won! ${userChoice} beats ${computerChoice}`;
-        return `You lost! ${computerChoice} beats ${userChoice}`;
+        if (userChoice === 'ROCK')
+            return 'WON';
+        else if (userChoice === 'PAPER')
+            return 'LOST';
     }
+    return 'TIE';
 }
 
 // Print result to console
-function printResult(result) {
-    console.log(result);
+function printResult(result, userChoice, computerChoice) {
+    if (result === 'WON') 
+        console.log(`You won! ${userChoice} beats ${computerChoice}!`);
+    else if (result === 'LOST')
+        console.log(`You lost! ${computerChoice} beats ${userChoice}!`);
+    else
+        console.log(`You tied! Computer also picked ${computerChoice}!`);
 }
 
 // Initiate playRound function
 function playRound() {
     let userChoice = getUserChoice();
     let computerChoice = getComputerChoice();
-    let result = compareChoice(userChoice, computerChoice);
+    let result = compareChoices(userChoice, computerChoice);
 
-    printResult(result);
+    printResult(result, userChoice, computerChoice);
 }
 
 function game() {
-    playRound();
+    for (let i = 1; i <= 5; i++) {
+        playRound();
+    }
+    
 }
 
-game()
+playRound()
 
 
 

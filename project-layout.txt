@@ -29,8 +29,3 @@ Create a function game() that calls playRound
     - Store and increment score for user when they win
     - Store and increment score for computer when they win
     - Prints final result to console
-
-userWon() return true or false
-based on comparison function
-if user won return true
-if computer won return false
