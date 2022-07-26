@@ -21,8 +21,16 @@ Compare user choice against computer choice
         PAPER THEN PLAYER LOSES
         SCISSORS THEN PLAYER TIES
 Return result based on comparison
-Print result to user as string
+Print result to console
 Create a function game() that calls playRound
 - Start a 5 round game
-    - Store ongoing score
-    - Prints final result to user as string
+    - Store and increment game count up to 5
+        - Loop 5 rounds
+    - Store and increment score for user when they win
+    - Store and increment score for computer when they win
+    - Prints final result to console
+
+userWon() return true or false
+based on comparison function
+if user won return true
+if computer won return false

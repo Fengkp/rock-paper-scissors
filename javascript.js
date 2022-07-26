@@ -47,8 +47,9 @@ function compareChoices(userChoice, computerChoice) {
     }
 }
 
+// Print result to console
 function printResult(result) {
-    console.log(result)
+    console.log(result);
 }
 
 // Initiate playRound function
@@ -57,10 +58,15 @@ function playRound() {
     let computerChoice = getComputerChoice();
     let result = compareChoice(userChoice, computerChoice);
 
-    printResult(result)
+    printResult(result);
 }
 
-playRound()
+function game() {
+    playRound();
+}
+
+game()
+
 
 
 
