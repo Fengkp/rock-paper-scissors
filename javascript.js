@@ -24,35 +24,47 @@ function getRandomWholeNum(min, max) {
 function compareChoices(userChoice, computerChoice) {
     if (computerChoice === 'ROCK') {
         if (userChoice === 'PAPER')
-            return 'WON';
+            return 'USER WON';
         else if (userChoice === 'SCISSORS')
-            return 'LOST';
+            return 'USER LOST';
     }
 
     if (computerChoice === 'PAPER') {
         if (userChoice === 'SCISSORS')
-            return 'WON';
+            return 'USER WON';
         else if (userChoice === 'ROCK')
-            return 'LOST';
+            return 'USER LOST';
     }
 
     if (computerChoice === 'SCISSORS') {
         if (userChoice === 'ROCK')
-            return 'WON';
+            return 'USER WON';
         else if (userChoice === 'PAPER')
-            return 'LOST';
+            return 'USER LOST';
     }
     return 'TIE';
 }
 
 // Print result to console
-function printResult(result, userChoice, computerChoice) {
-    if (result === 'WON') 
+function printRoundResult(result, userChoice, computerChoice) {
+    if (result === 'USER WON') 
         console.log(`You won! ${userChoice} beats ${computerChoice}!`);
-    else if (result === 'LOST')
+    else if (result === 'USER LOST')
         console.log(`You lost! ${computerChoice} beats ${userChoice}!`);
     else
         console.log(`You tied! Computer also picked ${computerChoice}!`);
+}
+
+// Print final result to console
+function printGameResult(userScore, computerScore) {
+    if (userScore > computerScore) 
+        console.log('You won the game!');
+    else if (userScore < computerScore)
+        console.log('You lost the game!');
+    else
+        console.log('The game was a draw!');
+    console.log(`User Score: ${userScore}
+Computer Score: ${computerScore}`);
 }
 
 // Initiate playRound function
@@ -61,17 +73,27 @@ function playRound() {
     let computerChoice = getComputerChoice();
     let result = compareChoices(userChoice, computerChoice);
 
-    printResult(result, userChoice, computerChoice);
+    printRoundResult(result, userChoice, computerChoice);
+    
+    return result;
 }
 
 function game() {
-    for (let i = 1; i <= 5; i++) {
-        playRound();
+    let userScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        let result = playRound();
+
+        if (result === 'USER WON')
+            userScore++;
+        else if (result === 'USER LOST')
+            computerScore++;
     }
-    
+    printGameResult(userScore, computerScore);
 }
 
-playRound()
+game();
 
 
 
