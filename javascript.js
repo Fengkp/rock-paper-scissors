@@ -1,11 +1,12 @@
 // Ask user for rock, paper, or scissors
 function getUserChoice() {
     let userChoice = prompt('Rock, Paper, or Scissors?');
+    // Input accounts for case sensitivity
     userChoice = userChoice.toUpperCase();
     return userChoice;
 }
 
-// Generate a random 
+// Computer picks from rock, paper or scissors
 function getComputerChoice() {
     const choices = ['ROCK', 'PAPER', 'SCISSORS'];
     const choice = getRandomWholeNum(0, 3);
@@ -13,11 +14,13 @@ function getComputerChoice() {
     return choices[choice];
 }
 
+// Generate a number from a range
 function getRandomWholeNum(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
-function playRound(computerSelection, playerSelection) {
+// Compare user choice against computer choice
+function compareChoices(userChoice, compareChoice) {
     if (computerSelection === 'ROCK') {
         if (playerSelection.toUpperCase() === 'ROCK')
             return 'You tied!';
@@ -45,7 +48,17 @@ function playRound(computerSelection, playerSelection) {
     }
 }
 
-let computerSelection = getComputerChoice();
+// Initiate playRound function
+function playRound() {
+    let userChoice = getUserChoice();
+    let computerChoice = getComputerChoice();
 
-console.log(`Computer selected ${computerSelection}!`)
-console.log(playRound(computerSelection, playerSelection));
+    compareChoice(userChoice, computerChoice);
+    console.log(`Computer selected ${computerSelection}!`)
+    console.log(playRound(computerSelection, playerSelection));
+}
+
+playRound()
+
+
+

@@ -1,26 +1,26 @@
+Initiate playRound function
 Ask user for rock, paper, or scissors
-- input accounts case sensitivity
-- this initiates playRound function
-        Computer picks from rock, paper or scissors
-        Compare user choice against computer choice
-            IF COMPUTER = ROCK
-            AND PLAYER =
-                ROCK THEN PLAYER TIES
-                PAPER THEN PLAYHER LOSES
-                SCISSORS THEN PLAYER WINS
+- input accounts for case sensitivity
+Computer picks from rock, paper or scissors
+Compare user choice against computer choice
+    IF COMPUTER = ROCK
+    AND PLAYER =
+        ROCK THEN PLAYER TIES
+        PAPER THEN PLAYHER LOSES
+        SCISSORS THEN PLAYER WINS
 
-            IF COMPUTER = PAPER
-            AND PLAYER =
-                ROCK THEN PLAYER LOSES
-                PAPER THEN PLAYER TIES
-                SCISSORS THEN PLAYER WINS
+    IF COMPUTER = PAPER
+    AND PLAYER =
+        ROCK THEN PLAYER LOSES
+        PAPER THEN PLAYER TIES
+        SCISSORS THEN PLAYER WINS
 
-            IF COMPUTER = SCISSORS
-            AND PLAYER =
-                ROCK THEN PLAYER WINS
-                PAPER THEN PLAYER LOSES
-                SCISSORS THEN PLAYER TIES
-        Return result based on comparison
+    IF COMPUTER = SCISSORS
+    AND PLAYER =
+        ROCK THEN PLAYER WINS
+        PAPER THEN PLAYER LOSES
+        SCISSORS THEN PLAYER TIES
+Return result based on comparison
 Print result to user as string
 Create a function game() that calls playRound
 - Start a 5 round game
