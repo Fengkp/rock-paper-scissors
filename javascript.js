@@ -24,27 +24,15 @@ function getRandomWholeNum(min, max) {
    then return how the user did as a string
    this will help with printing out round results and tracking scores */
 function compareChoices(userChoice, computerChoice) {
-    if (computerChoice === 'ROCK') {
-        if (userChoice === 'PAPER')
-            return 'USER WON';
-        else if (userChoice === 'SCISSORS')
-            return 'USER LOST';
-    }
-
-    if (computerChoice === 'PAPER') {
-        if (userChoice === 'SCISSORS')
-            return 'USER WON';
-        else if (userChoice === 'ROCK')
-            return 'USER LOST';
-    }
-
-    if (computerChoice === 'SCISSORS') {
-        if (userChoice === 'ROCK')
-            return 'USER WON';
-        else if (userChoice === 'PAPER')
-            return 'USER LOST';
-    }
-    return 'TIE';
+    if (computerChoice === 'ROCK' && userChoice === 'PAPER'
+        || computerChoice === 'PAPER' && userChoice === 'SCISSORS'
+        || computerChoice === 'SCISSORS' && userChoice === 'ROCK')
+        return 'USER WON';
+    else if (computerChoice === 'ROCK' && userChoice === 'SCISSORS'
+            || computerChoice === 'PAPER' && userChoice === 'ROCK'
+            || computerChoice === 'SCISSORS' && userChoice === 'PAPER')
+        return 'USER LOST';
+    return 'TIE'
 }
 
 /* Print round result to console */
@@ -98,7 +86,3 @@ function game() {
 }
 
 game();
-
-
-
-
