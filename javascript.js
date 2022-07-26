@@ -1,3 +1,11 @@
+// Ask user for rock, paper, or scissors
+function getUserChoice() {
+    let userChoice = prompt('Rock, Paper, or Scissors?');
+    userChoice = userChoice.toUpperCase();
+    return userChoice;
+}
+
+// Generate a random 
 function getComputerChoice() {
     const choices = ['ROCK', 'PAPER', 'SCISSORS'];
     const choice = getRandomWholeNum(0, 3);
@@ -38,7 +46,6 @@ function playRound(computerSelection, playerSelection) {
 }
 
 let computerSelection = getComputerChoice();
-let playerSelection = prompt('Rock, paper, or scissors?');
 
 console.log(`Computer selected ${computerSelection}!`)
 console.log(playRound(computerSelection, playerSelection));
