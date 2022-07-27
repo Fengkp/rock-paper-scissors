@@ -3,6 +3,7 @@
    Need to account for inputs other than rock, paper or scissors */
 function getUserChoice() {
     let userChoice = prompt('Rock, Paper, or Scissors?');
+    
     userChoice = userChoice.toUpperCase();
     return userChoice;
 }
