@@ -60,7 +60,7 @@ function printGameResult(userScore, computerScore) {
 /* Generates choices for user and computer, compares those choices 
    then prints a result for the round */
 function playRound() {
-    let userChoice = getUserChoice();
+    let userChoice = this.id.toUpperCase();
     let computerChoice = getComputerChoice();
     let result = compareChoices(userChoice, computerChoice);
 
@@ -73,17 +73,19 @@ function playRound() {
 function game() {
     let userScore = 0;
     let computerScore = 0;
-    let gameLength = 5
 
-    for (let i = 0; i < gameLength; i++) {
-        let result = playRound();
+    let result = playRound();
 
-        if (result === 'USER WON')
-            userScore++;
-        else if (result === 'USER LOST')
-            computerScore++;
-    }
+    if (result === 'USER WON')
+        userScore++;
+    else if (result === 'USER LOST')
+        computerScore++;
+
     printGameResult(userScore, computerScore);
 }
 
-game();
+// Rock button that triggers a new round and sets user choice as rock
+const btns = document.querySelectorAll('.btn');
+btns.forEach(btn => btn.addEventListener('click', playRound));
+
+
