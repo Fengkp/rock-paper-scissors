@@ -1,13 +1,3 @@
-/* Prompts user for rock, paper, or scissors
-   and changes input to uppercase to help with comparison function
-   Need to account for inputs other than rock, paper or scissors */
-function getUserChoice() {
-    let userChoice = prompt('Rock, Paper, or Scissors?');
-    
-    userChoice = userChoice.toUpperCase();
-    return userChoice;
-}
-
 /* Computer picks from rock, paper or scissors based on random num function*/
 function getComputerChoice() {
     const choices = ['ROCK', 'PAPER', 'SCISSORS'];
@@ -59,8 +49,7 @@ function printGameResult(userScore, computerScore) {
 
 /* Generates choices for user and computer, compares those choices 
    then prints a result for the round */
-function playRound() {
-    let userChoice = this.id.toUpperCase();
+function playRound(userChoice) {
     let computerChoice = getComputerChoice();
     let result = compareChoices(userChoice, computerChoice);
 
@@ -76,15 +65,16 @@ function game() {
     let result;
     const btns = document.querySelectorAll('.btn');
 
-    btns.forEach(btn => btn.addEventListener('click', () => {
-        result = playRound();
+    btns.forEach(btn => btn.addEventListener('click', (e) => {
+        let userChoice = e.target.id.toUpperCase();
+        
+        playRound(userChoice);
         if (result === 'USER WON')
             userScore++;
         else if (result === 'USER LOST')
             computerScore++;
+        printGameResult(userScore, computerScore);
     }));
-
-    printGameResult(userScore, computerScore);
 }
 
 game();
