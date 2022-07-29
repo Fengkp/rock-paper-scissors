@@ -37,16 +37,15 @@ function printRoundResult(result, userChoice, computerChoice) {
 }
 
 /* Return text content for results-display div depending on result */
-function printGameResult(userScore, computerScore) {
-    let result;
+function getGameResult(scores) {
+    const scoreboard = document.querySelector('.scoreboard');
+    const result = document.createElement('div');
 
-    if (userScore > computerScore) 
-        result = 'You won the game!';
-    else if (userScore < computerScore)
-        result = 'You lost the game!';
+    if (scores[0] > scores[1]) 
+        result.textContent = 'You won the game!';
     else
-        result = 'The game was a draw!';
-    return result + `\nUser Score: ${userScore} \nComputer Score: ${computerScore}`;
+        result.textContent = 'You lost the game!';
+    scoreboard.appendChild(result)
 }
 
 /* Generates choices for user and computer, compares those choices 
@@ -60,25 +59,41 @@ function playRound(userChoice) {
     return result;
 }
 
+function updateScoreBoard(scores) {
+    let scoreBoardText = 
+        `User Score: ${scores[0]} Computer Score: ${scores[1]}`;
+    const scoreboard = document.querySelector('.scoreboard');
+
+    scoreboard.textContent = scoreBoardText;
+}
+
+function scoreTracker(scores, result) {
+    if (result === 'WIN')
+        scores[0]++;
+    else if (result === 'LOSS')
+        scores[1]++;
+    return scores;
+}
+
 /* Keeps track of scores as each round plays out then prints overall results */
 function game() {
-    let userScore = 0;
-    let computerScore = 0;
+    let scores = [0, 0]
     let result;
     const btns = document.querySelectorAll('.btn');
-    const resultsDisplay = document.querySelector('.result-display');
+
+    updateScoreBoard(scores);
 
     btns.forEach(btn => btn.addEventListener('click', (e) => {
         let userChoice = e.target.id.toUpperCase();
         
         result = playRound(userChoice);
-        if (result === 'WIN')
-            userScore++;
-        else if (result === 'LOSS')
-            computerScore++;
+        scores = scoreTracker(scores, result)
+        updateScoreBoard(scores);
         
-        resultsDisplay.textContent = 
-            `User Score: ${userScore} Computer Score: ${computerScore}`;
+        if (scores[0] == 5 || scores[1] == 5) {
+            getGameResult(scores)
+            scores = [0, 0];
+        }
     }));
 }
 
