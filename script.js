@@ -18,33 +18,35 @@ function compareChoices(userChoice, computerChoice) {
     if (computerChoice === 'ROCK' && userChoice === 'PAPER'
         || computerChoice === 'PAPER' && userChoice === 'SCISSORS'
         || computerChoice === 'SCISSORS' && userChoice === 'ROCK')
-        return 'USER WON';
+        return 'WIN';
     else if (computerChoice === 'ROCK' && userChoice === 'SCISSORS'
              || computerChoice === 'PAPER' && userChoice === 'ROCK'
              || computerChoice === 'SCISSORS' && userChoice === 'PAPER')
-        return 'USER LOST';
+        return 'LOSS';
     return 'TIE'
 }
 
 /* Print round result to console */
 function printRoundResult(result, userChoice, computerChoice) {
-    if (result === 'USER WON') 
+    if (result === 'WIN') 
         console.log(`You won! ${userChoice} beats ${computerChoice}!`);
-    else if (result === 'USER LOST')
+    else if (result === 'LOSS')
         console.log(`You lost! ${computerChoice} beats ${userChoice}!`);
     else
         console.log(`You tied! Computer also picked ${computerChoice}!`);
 }
 
-/* Print final result to console based on scores */
+/* Return text content for results-display div depending on result */
 function printGameResult(userScore, computerScore) {
+    let result;
+
     if (userScore > computerScore) 
-        console.log('You won the game!');
+        result = 'You won the game!';
     else if (userScore < computerScore)
-        console.log('You lost the game!');
+        result = 'You lost the game!';
     else
-        console.log('The game was a draw!');
-    console.log(`User Score: ${userScore} \nComputer Score: ${computerScore}`);
+        result = 'The game was a draw!';
+    return result + `\nUser Score: ${userScore} \nComputer Score: ${computerScore}`;
 }
 
 /* Generates choices for user and computer, compares those choices 
@@ -64,20 +66,22 @@ function game() {
     let computerScore = 0;
     let result;
     const btns = document.querySelectorAll('.btn');
+    const resultsDisplay = document.querySelector('.result-display');
 
     btns.forEach(btn => btn.addEventListener('click', (e) => {
         let userChoice = e.target.id.toUpperCase();
         
-        playRound(userChoice);
-        if (result === 'USER WON')
+        result = playRound(userChoice);
+        if (result === 'WIN')
             userScore++;
-        else if (result === 'USER LOST')
+        else if (result === 'LOSS')
             computerScore++;
-        printGameResult(userScore, computerScore);
+        
+        resultsDisplay.textContent = 
+            `User Score: ${userScore} Computer Score: ${computerScore}`;
     }));
 }
 
 game();
 
-//const resultDisplay = document.querySelector('.resultDisplay');
 

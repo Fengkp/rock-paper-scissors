@@ -1,3 +1,4 @@
+PART 1
 Initiate playRound function
 Ask user for rock, paper, or scissors
 - input accounts for case sensitivity
@@ -29,3 +30,14 @@ Create a function game() that calls playRound
     - Store and increment score for user when they win
     - Store and increment score for computer when they win
     - Print final result to console
+
+PART 2
+Each button must have a click event that triggers the round
+- It will provide the round function with the choice parameter
+    - Use button id
+The round function will return the result of the round
+The round result will increment the score for either user or computer
+- If the result is a tie, no one gets a point
+- Update results-display with realtime score updates
+When score for either user or computer reaches 5, announce winner
+- Append to results-display div
