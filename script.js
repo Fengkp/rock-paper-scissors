@@ -73,19 +73,21 @@ function playRound() {
 function game() {
     let userScore = 0;
     let computerScore = 0;
+    let result;
+    const btns = document.querySelectorAll('.btn');
 
-    let result = playRound();
-
-    if (result === 'USER WON')
-        userScore++;
-    else if (result === 'USER LOST')
-        computerScore++;
+    btns.forEach(btn => btn.addEventListener('click', () => {
+        result = playRound();
+        if (result === 'USER WON')
+            userScore++;
+        else if (result === 'USER LOST')
+            computerScore++;
+    }));
 
     printGameResult(userScore, computerScore);
 }
 
-// Rock button that triggers a new round and sets user choice as rock
-const btns = document.querySelectorAll('.btn');
-btns.forEach(btn => btn.addEventListener('click', playRound));
+game();
 
+//const resultDisplay = document.querySelector('.resultDisplay');
 
